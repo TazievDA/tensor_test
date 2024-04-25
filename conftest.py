@@ -12,9 +12,8 @@ def browser():
         "download.default_directory": f"{os.getcwd()}",
         "download.prompt_for_download": False,
         "download.directory_upgrade": True,
-        "safebrowsing.enabled": False
+        "safebrowsing.enabled": True
     })
-    chrome_options.enable_downloads = True
     path = ChromeDriverManager().install()
     driver_service = Service(executable_path=path)
     driver = Driver(service=driver_service, options=chrome_options)

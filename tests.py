@@ -1,7 +1,7 @@
 from time import sleep
 
 from driver import Driver
-from selenium.webdriver import ChromeOptions, Remote
+from pages.download_directory import DownloadDirectory
 from pages.downloads_page import DownloadPage
 from pages.main_page import MainPage
 from pages.contacts_page import ContactsPage
@@ -43,3 +43,10 @@ def test_third_scenario(browser: Driver):
     MainPage.click_download_local_version(browser)
     DownloadPage.go_to_plugin(browser)
     DownloadPage.download_plugin(browser)
+    sleep(15)
+    actual_presense = DownloadDirectory.check_file_presence()
+    expected = 'OK'
+    assert actual_presense == expected
+    actual_file_size = DownloadDirectory.check_file_size()
+    expected_file_size = DownloadPage.expected_file_size(browser)
+    assert actual_file_size == expected_file_size
