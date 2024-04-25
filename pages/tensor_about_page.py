@@ -1,5 +1,3 @@
-from time import sleep
-
 from driver import Driver, wait_element
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By

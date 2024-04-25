@@ -1,6 +1,8 @@
 from time import sleep
 
 from driver import Driver
+from selenium.webdriver import ChromeOptions, Remote
+from pages.downloads_page import DownloadPage
 from pages.main_page import MainPage
 from pages.contacts_page import ContactsPage
 from pages.tensor_main_page import TensorMainPage
@@ -35,3 +37,9 @@ def test_second_scenario(browser: Driver):
     assert changed_partners_list != starter_partners_list
     assert expected_text_in_url in actual_url
     assert expected_text_in_title in actual_title
+
+def test_third_scenario(browser: Driver):
+    MainPage.find_download_local_version(browser)
+    MainPage.click_download_local_version(browser)
+    DownloadPage.go_to_plugin(browser)
+    DownloadPage.download_plugin(browser)
